@@ -1,7 +1,8 @@
-modules = ["kotlin"]
+modules = ["kotlin", "java-17-openjdk", "android-sdk"]
 
 [nix]
 channel = "stable-24_05"
+packages = ["jdk", "curl"]
 
 [workflows]
 runButton = "Project"

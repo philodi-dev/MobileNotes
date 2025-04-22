@@ -1,7 +1,6 @@
-package com.philodi.carbonium.ui.theme
+package com.philodi.carbonium.presentation.theme
 
 import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -16,33 +15,45 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
+// Custom colors for our e-commerce app
+private val primaryColor = Color(0xFF00ACC1)
+private val secondaryColor = Color(0xFF26A69A)
+private val tertiaryColor = Color(0xFFEF5350)
+private val backgroundColor = Color(0xFFF5F5F5)
+private val darkBackgroundColor = Color(0xFF121212)
+private val darkSurfaceColor = Color(0xFF1E1E1E)
+
 private val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFF00BCD4),
-    secondary = Color(0xFF03A9F4),
-    tertiary = Color(0xFF7C4DFF)
+    primary = primaryColor,
+    secondary = secondaryColor,
+    tertiary = tertiaryColor,
+    background = darkBackgroundColor,
+    surface = darkSurfaceColor
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF00ACC1),
-    secondary = Color(0xFF0288D1),
-    tertiary = Color(0xFF673AB7)
+    primary = primaryColor,
+    secondary = secondaryColor,
+    tertiary = tertiaryColor,
+    background = backgroundColor,
+    surface = Color.White
 )
 
 @Composable
 fun CarboniumTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+        dynamicColor && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
+    
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {

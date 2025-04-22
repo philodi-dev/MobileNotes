@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.philodi.carbonium.ui.navigation.AppNavigation
-import com.philodi.carbonium.ui.theme.CarboniumTheme
+import com.philodi.carbonium.presentation.navigation.AppNavigation
+import com.philodi.carbonium.presentation.theme.CarboniumTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
